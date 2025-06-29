@@ -1,0 +1,8 @@
+openai
+pandas
+json
+requests
+numpy
+uv
+python-dotenv
+requests
