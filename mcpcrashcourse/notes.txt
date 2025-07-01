@@ -1,0 +1,35 @@
+1st 
+creating a server
+in weather.py
+    We are calling a weather api to get the weather news via async
+    next we are formatting the response of the api result above as per our convineance 
+    NEXT Important thing
+        TO CREATE ANY MCP TOOL 
+            USE @mcp.tool() DECORATOR ABOVE THE FUNCTION -> BECOME MCP TOOL
+        we are creating a MCP TOOL , again an another function using async which may be api call  also THIS IS MY TOOL/SERVICE
+        here in this function the DOC STRING is very important , via this doc string the llm is able to understand when a specific request comes
+
+NOW WE SUCCESSFULLY CREATED THE MCP TOOL / SERVER
+LIKE THIS WE CAN CREATE AS MANY AS WE WANT
+
+-------------------------------------------------*******************************************************------------------------------------------------------------------------
+2ND 
+HOW DO I RUN MY SERVER
+
+    HERE MY HOSTS CREATE A MCP CLIENT 
+        hosts can be anything
+            - streamlit app
+            - fastapi app
+            - flask app
+            - any frontend app
+            - curser IDE
+            - claude desktop
+            - mcp inspector
+            - terminal
+     SO WITH THESE HOSTS WE CAN CREATE A MCP CLIENT 
+        THESE CLIENT -> MCP SERVER -> CAN DEAL WITH TOOLS 
+
+     FIRST WE RUN THIS VIA MCP inspector
+        STEPS TO FOLLLOW
+            - uv run mcp dev file_name ( uv run mcp dev server/weather.py)
+
