@@ -49,6 +49,10 @@ HOW DO I RUN MY SERVER
         and build custom MCP agents that have tool access, without using closed source or application clients.
 
     - Then create a client.py file 
+    - here mcp use is supports langchain llm models
+    - so install langchain-openai to use Azureopenai
+    - after creating client.py 
+    - RUN uv run server/client.py
     
 -----------------------------------------------------------
 - DEFINING MCP RESOURCE
