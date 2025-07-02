@@ -32,4 +32,77 @@ HOW DO I RUN MY SERVER
      FIRST WE RUN THIS VIA MCP inspector
         STEPS TO FOLLLOW
             - uv run mcp dev file_name ( uv run mcp dev server/weather.py)
+            - then a mcp inspector web browser will be opened 
+            - then you can see mcp server running , and you can play with the UI 
 
+    2ND RUN THE TOOL VIA CLAUDE desktop
+    STEPS TO FOLLLOW
+    - to add the tool inside the claude run this command in the termnial 
+        - uv run mcp install {tool file path }
+        - then you can check in the claude desktop , the tool is added
+
+    3rd RUN THE TOOL VIA TERMINAL
+    STEPS TO FOLLLOW
+    - create a weather.json file were you should add the configurations
+    - then install mcp-use 
+        MCP-Use is the open source way to connect any LLM to any MCP server 
+        and build custom MCP agents that have tool access, without using closed source or application clients.
+
+    - Then create a client.py file 
+    
+-----------------------------------------------------------
+- DEFINING MCP RESOURCE
+-----------------------------------------------------------
+Resources are how you expose data to LLMs. They're similar to GET endpoints in a REST API - 
+    they provide data but shouldn't perform significant computation or have side effects:
+
+it can be done via @mcp.resource 
+
+
+----------------------------------------------------------------------------
+TRANSPORT PROTOCOLS IN MCP
+- HTTP
+- STDIO (standard input /output)
+---------------------------------------------------------------------------
+
+AT THE TIME OF PRODUCTION 
+- WE NEED TO HOST BOTH MCP SERVER SEPERATELY AND MCP CLIENT SEPERATELY
+- then server needs to communicate with the help of HTTP post request
+- AT THIS POINT WE USE SSE (SERVER SENT EVENTS)
+-----------------------------------------
+Streamable HTTP
+--------------------------------------
+The Streamable HTTP transport uses HTTP POST requests for client-to-server communication and optional Server-Sent Events (SSE) streams for server-to-client communication.
+
+Use Streamable HTTP when:
+
+    Building web-based integrations
+    Needing client-server communication over HTTP
+    Requiring stateful sessions
+    Supporting multiple concurrent clients
+    Implementing resumable connections
+
+How it Works
+-------------------------------------------
+1. Client-to-Server Communication: Every JSON-RPC message from client to server is sent as a new HTTP POST request to the MCP endpoint
+2.Server Responses: The server can respond either with:
+    A single JSON response (Content-Type: application/json)
+    An SSE stream (Content-Type: text/event-stream) for multiple messages
+3.Server-to-Client Communication: Servers can send requests/notifications to clients via:
+    SSE streams initiated by client requests
+    SSE streams from HTTP GET requests to the MCP endpoint
+
+------------------------------------------------------------
+IF WE ARE WORKING IN LOCAL
+-------------------------------------------------------------
+
+WE USE STDIO (TRANSPORT METHOD)
+
+The stdio transport enables communication through standard input and output streams. This is particularly useful for local integrations and command-line tools.
+
+Use stdio when:
+
+    Building command-line tools
+    Implementing local integrations
+    Needing simple process communication
+    Working with shell scripts
